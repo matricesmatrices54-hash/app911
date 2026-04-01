@@ -10,7 +10,7 @@
     "export:web": "expo export --platform web",
     "postexport:web": "node scripts/prepare-gh-pages.js",
     "build:gh-pages": "npm run export:web",
-    "deploy": "npm run build:gh-pages && gh-pages -d dist"
+    "deploy": "npm run build:gh-pages && gh-pages -d dist --dotfiles"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
