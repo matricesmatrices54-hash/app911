@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DIST_DIR = path.join(__dirname, '..', 'dist');
+const NO_JEKYLL_FILE = path.join(DIST_DIR, '.nojekyll');
 
 function rewriteHtmlToRelativePaths(htmlContent) {
   return htmlContent
@@ -42,4 +43,8 @@ if (!fs.existsSync(DIST_DIR)) {
 }
 
 walk(DIST_DIR);
+if (!fs.existsSync(NO_JEKYLL_FILE)) {
+  fs.writeFileSync(NO_JEKYLL_FILE, '', 'utf8');
+  console.log('Creado dist/.nojekyll para habilitar rutas con prefijo _.');
+}
 console.log('GitHub Pages path fix completado.');
